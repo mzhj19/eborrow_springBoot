@@ -14,15 +14,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 
 
 //@CrossOrigin("http://localhost:4200")
@@ -55,8 +53,7 @@ public class UserController {
                 errorMessages.add(ResponseMessageConstants.EMAIL_ALREADY_EXISTS);
                 errorMessages.add(ResponseMessageConstants.MOBILE_NO_ALREADY_EXISTS);
                 return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.BAD_REQUEST.value(), errorMessages), HttpStatus.BAD_REQUEST);
-            }
-            else if (existEmail.isPresent())
+            } else if (existEmail.isPresent())
                 return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.BAD_REQUEST.value(), ResponseMessageConstants.EMAIL_ALREADY_EXISTS), HttpStatus.BAD_REQUEST);
             else
                 return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.BAD_REQUEST.value(), ResponseMessageConstants.MOBILE_NO_ALREADY_EXISTS), HttpStatus.BAD_REQUEST);
@@ -66,4 +63,24 @@ public class UserController {
 
         return new ResponseEntity<>(new ResponseSuccessData<>(ResponseMessageConstants.SAVE_SUCCESS, user), HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
+    public ResponseEntity<?> getAllUsers() throws Exception {
+        List<User> user = userService.getAllUsers();
+        if (user.size() == 0) {
+            return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.NOT_FOUND.value(), ResponseMessageConstants.DATA_NOT_FOUND), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(new ResponseSuccessData<>(ResponseMessageConstants.DATA_FOUND, user), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/getUserById", method = RequestMethod.GET)
+    public ResponseEntity<?> test(@RequestParam("id") String id) throws Exception {
+        Optional<User> user = userService.getUserById(id);
+        if (user.isEmpty()) {
+            return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.NOT_FOUND.value(), ResponseMessageConstants.DATA_NOT_FOUND), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(new ResponseSuccessData<>(ResponseMessageConstants.DATA_FOUND, user), HttpStatus.OK);
+    }
+
+
 }

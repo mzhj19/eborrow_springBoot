@@ -7,25 +7,14 @@ import com.mzhj19.eborrow.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
-
     @Autowired
     private UserRepository userRepository;
 
-/*    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;*/
-
-
-    @Override
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
-
-    @Override
-    public User findByMobileNo(String mobileNo) {
-        return userRepository.findByMobileNo(mobileNo);
-    }
 
     @Override
     public User save(UserRegisterReqDto userRegisterReqDto) {
@@ -37,4 +26,26 @@ public class UserServiceImpl implements UserService {
                 .build()
         );
     }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public Optional<User> getUserById(String id) {
+        return userRepository.findById(Long.parseLong(id));
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public User findByMobileNo(String mobileNo) {
+        return userRepository.findByMobileNo(mobileNo);
+    }
+
+
 }

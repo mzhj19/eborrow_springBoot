@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,12 +25,21 @@ public class User {
     @Column(name = "mobileNo", nullable = false, unique = true)
     private String mobileNo;
 
+    @JsonIgnore
     @Column(name = "password", nullable = false)
     private String password;
 
     @JsonIgnore
     @Transient
     private String confirmedPassword;
+
+    @JsonIgnore
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            mappedBy = "ownerId",
+            cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE,}
+    )
+    private List<Product> products;
 
     @JsonIgnore
     @Column(name = "created_at", insertable = false, updatable = false,

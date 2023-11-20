@@ -23,8 +23,8 @@ public class Borrowed {
     private User borrower;
 
     @ManyToOne
-    @JoinColumn(name = "item_id")
-    private Item item;
+    @JoinColumn(name = "product_id")
+    private Product products;
 
     @Column(name = "start_date", nullable = false)
     private LocalDateTime startDate;
