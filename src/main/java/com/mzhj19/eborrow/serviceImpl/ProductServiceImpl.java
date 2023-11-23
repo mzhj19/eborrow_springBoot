@@ -8,8 +8,6 @@ import com.mzhj19.eborrow.repository.UserRepository;
 import com.mzhj19.eborrow.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
                 .image1(productDto.getImage1())
                 .borrowType(productDto.getBorrowType())
                 .perUnitPrice(productDto.getPerUnitPrice())
+                .mobileNo(productDto.getMobileNo())
                 .ownerId(currentUser)
                 .division(productDto.getDivision())
                 .district(productDto.getDistrict())
@@ -46,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getProductById(Long id) {
+    public Product getProductById(Long id) {
         return productRepository.findProductById(id);
     }
 
@@ -54,4 +53,43 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findProductByDivision(String division) {
         return productRepository.findProductByDivision(division);
     }
+
+    @Override
+    public List<Product> findProductByOwner(String mail) {
+        return productRepository.findByOwnerIdEma(mail);
+    }
+
+    @Override
+    public List<Product> getAllProduct() {
+        return productRepository.findAll();
+    }
+
+    @Override
+    public Product updateProduct(Long id, ProductDto productDto) {
+        Optional<Product> optionalProduct = productRepository.findById(id);
+        if (optionalProduct.isEmpty()) {
+            return null;
+        }
+
+        Product existingProduct = optionalProduct.get();
+        existingProduct.setName(productDto.getName());
+        existingProduct.setCategory(productDto.getCategory());
+        existingProduct.setDescription(productDto.getDescription());
+        existingProduct.setImage1(productDto.getImage1());
+        existingProduct.setBorrowType(productDto.getBorrowType());
+        existingProduct.setPerUnitPrice(productDto.getPerUnitPrice());
+        existingProduct.setMobileNo(productDto.getMobileNo());
+        existingProduct.setDivision(productDto.getDivision());
+        existingProduct.setDistrict(productDto.getDistrict());
+        existingProduct.setSubDistrict(productDto.getSubDistrict());
+
+        return productRepository.save(existingProduct);
+    }
+
+    @Override
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
+    }
+
+
 }

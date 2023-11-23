@@ -16,11 +16,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 
 
 //@CrossOrigin("http://localhost:4200")
@@ -45,18 +43,9 @@ public class UserController {
         }
 
         Optional<User> existEmail = Optional.ofNullable(userService.findByEmail(userRegisterReqDto.getEmail()));
-        Optional<User> existMobileNo = Optional.ofNullable(userService.findByMobileNo(userRegisterReqDto.getMobileNo()));
 
-        if (existEmail.isPresent() || existMobileNo.isPresent()) {
-            if (existEmail.isPresent() && existMobileNo.isPresent()) {
-                ArrayList<String> errorMessages = new ArrayList<>();
-                errorMessages.add(ResponseMessageConstants.EMAIL_ALREADY_EXISTS);
-                errorMessages.add(ResponseMessageConstants.MOBILE_NO_ALREADY_EXISTS);
-                return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.BAD_REQUEST.value(), errorMessages), HttpStatus.BAD_REQUEST);
-            } else if (existEmail.isPresent())
-                return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.BAD_REQUEST.value(), ResponseMessageConstants.EMAIL_ALREADY_EXISTS), HttpStatus.BAD_REQUEST);
-            else
-                return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.BAD_REQUEST.value(), ResponseMessageConstants.MOBILE_NO_ALREADY_EXISTS), HttpStatus.BAD_REQUEST);
+        if (existEmail.isPresent()) {
+            return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.BAD_REQUEST.value(), ResponseMessageConstants.EMAIL_ALREADY_EXISTS), HttpStatus.BAD_REQUEST);
         }
 
         User user = userService.save(userRegisterReqDto);

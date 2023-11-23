@@ -29,7 +29,7 @@ public class Product {
 
     // TO DO 5 pictures
     @Lob
-    @Column(name = "image1", length = 1000)
+    @Column(name = "image1", length = 1000, nullable = false)
     private byte[] image1;
 
 /*    @Lob
@@ -44,13 +44,14 @@ public class Product {
     @Column(name = "image4")
     private byte[] image4;*/
 
-
+    @Column(name = "borrow_type", nullable = false)
+    private String borrowType;
 
     @Column(name = "per_unit_price", nullable = false)
     private String perUnitPrice;
 
-    @Column(name = "borrow_type", nullable = false)
-    private String borrowType;
+    @Column(name = "mobile_no", nullable = false)
+    private String mobileNo;
 
     @ManyToOne(
             cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE},
@@ -69,7 +70,8 @@ public class Product {
     private String subDistrict;
 
     //@Enumerated(EnumType.STRING)
-    @Column(name = "status", columnDefinition = "ENUM('BORROWED', 'RETURNED') DEFAULT 'BORROWED'")
+    //@Column(name = "status", columnDefinition = "ENUM('BORROWED', 'RETURNED') DEFAULT 'RETURNED'")
+    @Column(name = "status")
     private String status;
 
     @JsonIgnore

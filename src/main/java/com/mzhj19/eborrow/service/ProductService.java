@@ -8,6 +8,15 @@ import java.util.List;
 public interface ProductService {
     Product save(ProductDto productDto);
 
-    List<Product> getProductById(Long id);
+    Product getProductById(Long id);
+
     List<Product> findProductByDivision(String division);
+
+    List<Product> findProductByOwner(String mail);
+
+    List<Product> getAllProduct();
+
+    Product updateProduct(Long id, ProductDto productDto);
+
+    void deleteProduct(Long id);
 }

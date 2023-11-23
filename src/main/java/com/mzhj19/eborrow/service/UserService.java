@@ -16,6 +16,4 @@ public interface UserService {
 
     User findByEmail(String email);
 
-    User findByMobileNo(String mobileNo);
-
 }

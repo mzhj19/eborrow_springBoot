@@ -21,7 +21,6 @@ public class UserServiceImpl implements UserService {
         /*        String encodedPassword = bCryptPasswordEncoder.encode(userRegisterReqDto.getPassword());*/
         return userRepository.save(User.builder()
                 .email(userRegisterReqDto.getEmail())
-                .mobileNo(userRegisterReqDto.getMobileNo())
                 .password(userRegisterReqDto.getPassword())
                 .build()
         );
@@ -41,11 +40,5 @@ public class UserServiceImpl implements UserService {
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
-
-    @Override
-    public User findByMobileNo(String mobileNo) {
-        return userRepository.findByMobileNo(mobileNo);
-    }
-
 
 }

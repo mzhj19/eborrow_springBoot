@@ -18,9 +18,9 @@ public class UserRegisterReqDto implements Serializable {
     @Pattern(regexp = "^[\\w\\.-]+@[a-zA-Z\\d\\.-]+\\.[a-zA-Z]{2,}$", message = "INVALID EMAIL FORMAT!")
     private String email;
 
-    @NotBlank(message = "MOBILE NO CANNOT BE BLANK")
+/*    @NotBlank(message = "MOBILE NO CANNOT BE BLANK")
     @Pattern(regexp = "^[0-9]+$", message = "INVALID MOBILE NUMBER")
-    private String mobileNo;
+    private String mobileNo;*/
 
     @NotBlank(message = "PASSWORD CANNOT BE BLANK")
     private String password;
