@@ -18,7 +18,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     //@Query("SELECT c FROM product c where c.ownerId = ?1")
     Product findProductById(Long id);
 
-    List<Product> findProductByDivision(String division);
+    //List<Product> findProductByDivision(String division);
 
     @Query(value = "SELECT * FROM products p " +
             "WHERE p.owner_id IN (SELECT id FROM users u WHERE u.email = :email)", nativeQuery = true)

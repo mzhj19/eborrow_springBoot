@@ -1,0 +1,432 @@
+******************************************
+    Lookup table
+******************************************
+
+
+*********** Division ************
+INSERT INTO eborrow.division
+VALUES
+(1,'Mymensingh'),
+(2,'Dhaka'),
+(3,'Chittagong'),
+(4,'Sylhet'),
+(5,'Rajshahi'),
+(6,'Khulna'),
+(7,'Barisal'),
+(8,'Rangpur');
+
+
+
+*************************** District **************************
+
+-- Mymensingh Division
+INSERT INTO eborrow.district(id,name,division_id)
+VALUES
+(1,'Jamalpur',1),
+(2,'Mymensingh',1),
+(3,'Sherpur',1),
+(4,'Netrokona',1);
+
+-- Dhaka Division
+INSERT INTO eborrow.district(id,name,division_id)
+VALUES
+(5,'Narsingdi',2),
+(6, 'Gazipur', 2),
+(7, 'Shariatpur', 2),
+(8, 'Narayanganj', 2),
+(9, 'Tangail', 2),
+(10, 'Kishoreganj', 2),
+(11, 'Manikganj', 2),
+(12, 'Dhaka', 2),
+(13, 'Munshiganj', 2),
+(14, 'Rajbari', 2),
+(15, 'Madaripur', 2),
+(16, 'Gopalganj', 2),
+(17, 'Faridpur', 2);
+
+-- Chittagong Division
+INSERT INTO eborrow.district (id, name, division_id) VALUES
+(18, 'Cumilla', 3),
+(19, 'Feni', 3),
+(20, 'Brahmanbaria', 3),
+(21, 'Rangamati', 3),
+(22, 'Noakhali', 3),
+(23, 'Chandpur', 3),
+(24, 'Lakshmipur', 3),
+(25, 'Chattogram', 3),
+(26, 'Coxsbazar', 3),
+(27, 'Khagrachhari', 3),
+(28, 'Bandarban', 3);
+
+-- Sylhet Division
+INSERT INTO eborrow.district (id, name, division_id) VALUES
+(29, 'Sylhet', 4),
+(30, 'Moulvibazar', 4),
+(31, 'Habiganj', 4),
+(32, 'Sunamganj', 4);
+
+-- Rajshahi Division
+INSERT INTO eborrow.district (id, name, division_id) VALUES
+(33, 'Sirajganj', 5),
+(34, 'Pabna', 5),
+(35, 'Bogura', 5),
+(36, 'Rajshahi', 5),
+(37, 'Natore', 5),
+(38, 'Joypurhat', 5),
+(39, 'Chapainawabganj', 5),
+(40, 'Naogaon', 5);
+
+-- Khulna Division
+INSERT INTO eborrow.district (id, name, division_id) VALUES
+(41, 'Khulna', 6),
+(42, 'Jashore', 6),
+(43, 'Satkhira', 6),
+(44, 'Meherpur', 6),
+(45, 'Narail', 6),
+(46, 'Chuadanga', 6),
+(47, 'Kushtia', 6),
+(48, 'Magura', 6),
+(49, 'Bagerhat', 6),
+(50, 'Jhenaidah', 6);
+
+-- Barisal Division
+INSERT INTO eborrow.district (id, name, division_id) VALUES
+(51, 'Jhalakathi', 7),
+(52, 'Patuakhali', 7),
+(53, 'Pirojpur', 7),
+(54, 'Barisal', 7),
+(55, 'Bhola', 7),
+(56, 'Barguna', 7);
+
+-- Rangpur Division
+INSERT INTO eborrow.district (id, name, division_id) VALUES
+(57, 'Thakurgaon', 8),
+(58, 'Panchagarh', 8),
+(59, 'Dinajpur', 8),
+(60, 'Lalmonirhat', 8),
+(61, 'Nilphamari', 8),
+(62, 'Gaibandha', 8),
+(63, 'Kurigram', 8),
+(64, 'Rangpur', 8);
+
+
+
+
+
+********************************** Sub district **************************
+
+
+--Jamalpur district
+INSERT INTO eborrow.sub_district(id,name,district_id)
+VALUES
+(1,'Sarishabari',1),
+(2,'Madarganj',1),
+(3,'JamalpurSadar',1),
+(4,'Melandah',1),
+(5,'Islampur',1),
+(6,'Dewangonj',1),
+(7,'Bokshiganj',1);
+
+--Mymensingh district
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(8, 'Fulbaria', 2),
+(9, 'Trishal', 2),
+(10, 'Bhaluka', 2),
+(11, 'Muktagacha', 2),
+(12, 'Mymensinghsadar', 2),
+(13, 'Dhobaura', 2),
+(14, 'Phulpur', 2),
+(15, 'Haluaghat', 2),
+(16, 'Gouripur', 2),
+(17, 'Gafargaon', 2),
+(18, 'Iswarganj', 2),
+(19, 'Nandail', 2),
+(20, 'Tarakanda', 2);
+
+-- Sherpur District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(21, 'Sherpursadar', 3),
+(22, 'Nalitabari', 3),
+(23, 'Sreebordi', 3),
+(24, 'Nokla', 3),
+(25, 'Jhenaigati', 3);
+
+-- Netrokona District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(26, 'Barhatta', 4),
+(27, 'Durgapur', 4),
+(28, 'Kendua', 4),
+(29, 'Atpara', 4),
+(30, 'Madan', 4),
+(31, 'Khaliajuri', 4),
+(32, 'Kalmakanda', 4),
+(33, 'Mohongonj', 4),
+(34, 'Purbadhala', 4),
+(35, 'Netrokonasadar', 4);
+
+-- Narsingdi District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(36, 'Belabo', 5),
+(37, 'Monohardi', 5),
+(38, 'Narsingdisadar', 5),
+(39, 'Palash', 5),
+(40, 'Raipura', 5),
+(41, 'Shibpur', 5);
+
+-- Gazipur District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(42, 'Kaliganj', 6),
+(43, 'Kaliakair', 6),
+(44, 'Kapasia', 6),
+(45, 'Sadar', 6),
+(46, 'Sreepur', 6);
+
+-- Shariatpur District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(47, 'Sadar', 7),
+(48, 'Naria', 7),
+(49, 'Zajira', 7),
+(50, 'Gosairhat', 7),
+(51, 'Bhedarganj', 7),
+(52, 'Damudya', 7);
+
+-- Narayanganj District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(53, 'Araihazar', 8),
+(54, 'Bandar', 8),
+(55, 'Narayanganjsadar', 8),
+(56, 'Rupganj', 8),
+(57, 'Sonargaon', 8);
+
+-- Tangail District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(58, 'Basail', 9),
+(59, 'Bhuapur', 9),
+(60, 'Delduar', 9),
+(61, 'Ghatail', 9),
+(62, 'Gopalpur', 9),
+(63, 'Madhupur', 9),
+(64, 'Mirzapur', 9),
+(65, 'Nagarpur', 9),
+(66, 'Sakhipur', 9),
+(67, 'Tangailsadar', 9),
+(68, 'Kalihati', 9),
+(69, 'Dhanbari', 9);
+
+-- Kishoreganj District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(70, 'Itna', 10),
+(71, 'Katiadi', 10),
+(72, 'Bhairab', 10),
+(73, 'Tarail', 10),
+(74, 'Hossainpur', 10),
+(75, 'Pakundia', 10),
+(76, 'Kuliarchar', 10),
+(77, 'Kishoreganjsadar', 10),
+(78, 'Karimgonj', 10),
+(79, 'Bajitpur', 10),
+(80, 'Austagram', 10),
+(81, 'Mithamoin', 10),
+(82, 'Nikli', 10);
+
+-- Manikganj District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(83, 'Harirampur', 11),
+(84, 'Saturia', 11),
+(85, 'Sadar', 11),
+(86, 'Gior', 11),
+(87, 'Shibaloy', 11),
+(88, 'Doulatpur', 11),
+(89, 'Singiar', 11);
+
+-- Dhaka District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(90, 'Savar', 12),
+(91, 'Dhamrai', 12),
+(92, 'Keraniganj', 12),
+(93, 'Nawabganj', 12),
+(94, 'Dohar', 12);
+
+-- Munshiganj District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(95, 'Sadar', 13),
+(96, 'Sreenagar', 13),
+(97, 'Sirajdikhan', 13),
+(98, 'Louhajanj', 13),
+(99, 'Gajaria', 13),
+(100, 'Tongibari', 13);
+
+-- Rajbari District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(101, 'Sadar', 14),
+(102, 'Goalanda', 14),
+(103, 'Pangsa', 14),
+(104, 'Baliakandi', 14),
+(105, 'Kalukhali', 14);
+
+-- Madaripur District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(106, 'Sadar', 15),
+(107, 'Shibchar', 15),
+(108, 'Kalkini', 15),
+(109, 'Rajoir', 15),
+(110, 'Dasar', 15);
+
+-- Gopalganj District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(111, 'Sadar', 16),
+(112, 'Kashiani', 16),
+(113, 'Tungipara', 16),
+(114, 'Kotalipara', 16),
+(115, 'Muksudpur', 16);
+
+-- Faridpur District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(116, 'Sadar', 17),
+(117, 'Alfadanga', 17),
+(118, 'Boalmari', 17),
+(119, 'Sadarpur', 17),
+(120, 'Nagarkanda', 17),
+(121, 'Bhanga', 17),
+(122, 'Charbhadrasan', 17),
+(123, 'Madhukhali', 17),
+(124, 'Saltha', 17);
+
+-- Cumilla District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(125, 'Debidwar', 18),
+(126, 'Barura', 18),
+(127, 'Brahmanpara', 18),
+(128, 'Chandina', 18),
+(129, 'Chauddagram', 18),
+(130, 'Daudkandi', 18),
+(131, 'Homna', 18),
+(132, 'Laksam', 18),
+(133, 'Muradnagar', 18),
+(134, 'Nangalkot', 18),
+(135, 'Cumillasadar', 18),
+(136, 'Meghna', 18),
+(137, 'Monohargonj', 18),
+(138, 'Sadarsouth', 18),
+(139, 'Titas', 18),
+(140, 'Burichang', 18),
+(141, 'Lalmai', 18);
+
+
+-- Feni District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(142, 'Chhagalnaiya', 19),
+(143, 'Sadar', 19),
+(144, 'Sonagazi', 19),
+(145, 'Fulgazi', 19),
+(146, 'Parshuram', 19),
+(147, 'Daganbhuiyan', 19);
+
+-- Brahmanbaria District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(148, 'Sadar', 20),
+(149, 'Kasba', 20),
+(150, 'Nasirnagar', 20),
+(151, 'Sarail', 20),
+(152, 'Ashuganj', 20),
+(153, 'Akhaura', 20),
+(154, 'Nabinagar', 20),
+(155, 'Bancharampur', 20),
+(156, 'Bijoynagar', 20);
+
+-- Rangamati District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(157, 'Sadar', 21),
+(158, 'Kaptai', 21),
+(159, 'Kawkhali', 21),
+(160, 'Baghaichari', 21),
+(161, 'Barkal', 21),
+(162, 'Langadu', 21),
+(163, 'Rajasthali', 21),
+(164, 'Belaichari', 21),
+(165, 'Juraichari', 21),
+(166, 'Naniarchar', 21);
+
+-- Noakhali District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(167, 'Sadar', 22),
+(168, 'Companiganj', 22),
+(169, 'Begumganj', 22),
+(170, 'Hatia', 22),
+(171, 'Subarnachar', 22),
+(172, 'Kabirhat', 22),
+(173, 'Senbug', 22),
+(174, 'Chatkhil', 22),
+(175, 'Sonaimuri', 22);
+
+-- Chandpur District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(176, 'Haimchar', 23),
+(177, 'Kachua', 23),
+(178, 'Shahrasti', 23),
+(179, 'Sadar', 23),
+(180, 'Matlabsouth', 23),
+(181, 'Hajiganj', 23),
+(182, 'Matlabnorth', 23),
+(183, 'Faridgonj', 23);
+
+-- Lakshmipur District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(184, 'Sadar', 24),
+(185, 'Kamalnagar', 24),
+(186, 'Raipur', 24),
+(187, 'Ramgati', 24),
+(188, 'Ramganj', 24);
+
+-- Chattogram District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(189, 'Rangunia', 25),
+(190, 'Sitakunda', 25),
+(191, 'Mirsharai', 25),
+(192, 'Patiya', 25),
+(193, 'Sandwip', 25),
+(194, 'Banshkhali', 25),
+(195, 'Boalkhali', 25),
+(196, 'Anwara', 25),
+(197, 'Chandanaish', 25),
+(198, 'Satkania', 25),
+(199, 'Lohagara', 25),
+(200, 'Hathazari', 25),
+(201, 'Fatikchhari', 25),
+(202, 'Raozan', 25),
+(203, 'Karnafuli', 25);
+
+-- Cox's Bazar District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(204, 'Sadar', 26),
+(205, 'Chakaria', 26),
+(206, 'Kutubdia', 26),
+(207, 'Ukhiya', 26),
+(208, 'Moheshkhali', 26),
+(209, 'Pekua', 26),
+(210, 'Ramu', 26),
+(211, 'Teknaf', 26);
+
+-- Khagrachari District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(212, 'Sadar', 27),
+(213, 'Dighinala', 27),
+(214, 'Panchari', 27),
+(215, 'Laxmichhari', 27),
+(216, 'Mohalchari', 27),
+(217, 'Manikchari', 27),
+(218, 'Ramgarh', 27),
+(219, 'Matiranga', 27),
+(220, 'Guimara', 27);
+
+-- Bandarban District
+INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+(221, 'Sadar', 28),
+(222, 'Alikadam', 28),
+(223, 'Naikhongchhari', 28),
+(224, 'Rowangchhari', 28),
+(225, 'Lama', 28),
+(226, 'Ruma', 28),
+(227, 'Thanchi', 28);
+
+

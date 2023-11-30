@@ -13,7 +13,7 @@ public interface ProductService {
 
     Product getProductById(Long id);
 
-    List<Product> findProductByDivision(String division);
+    //List<Product> findProductByDivision(String division);
 
     List<Product> findProductByOwner(String mail);
 

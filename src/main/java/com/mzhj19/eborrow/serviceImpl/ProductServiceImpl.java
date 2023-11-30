@@ -59,10 +59,10 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findProductById(id);
     }
 
-    @Override
+ /*   @Override
     public List<Product> findProductByDivision(String division) {
         return productRepository.findProductByDivision(division);
-    }
+    }*/
 
     @Override
     public List<Product> findProductByOwner(String mail) {

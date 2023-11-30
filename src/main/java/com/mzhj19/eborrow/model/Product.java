@@ -69,13 +69,13 @@ public class Product {
     private User ownerId;
 
     @Column(name = "division", nullable = false)
-    private String division;
+    private Long division;
 
     @Column(name = "district", nullable = false)
-    private String district;
+    private Long district;
 
     @Column(name = "sub_district", nullable = false)
-    private String subDistrict;
+    private Long subDistrict;
 
     //@Enumerated(EnumType.STRING)
     //@Column(name = "status", columnDefinition = "ENUM('BORROWED', 'RETURNED') DEFAULT 'RETURNED'")

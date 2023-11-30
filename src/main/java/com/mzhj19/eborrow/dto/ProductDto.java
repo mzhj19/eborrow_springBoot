@@ -41,14 +41,14 @@ public class ProductDto implements Serializable {
     @Pattern(regexp = "^[0-9]+$", message = "INVALID MOBILE NUMBER")
     private String mobileNo;
 
-    @NotBlank(message = "DIVISION CAN NOT BE BLANK")
-    private String division;
+    //@NotBlank(message = "DIVISION CAN NOT BE BLANK")
+    private Long division;
 
-    @NotBlank(message = "DISTRICT CAN NOT BE BLANK")
-    private String district;
+    //@NotBlank(message = "DISTRICT CAN NOT BE BLANK")
+    private Long district;
 
-    @NotBlank(message = "SUB DISTRICT CAN NOT BE BLANK")
-    private String subDistrict;
+    //@NotBlank(message = "SUB DISTRICT CAN NOT BE BLANK")
+    private Long subDistrict;
 
     private String status = "RETURNED";
 }
