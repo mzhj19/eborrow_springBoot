@@ -5,6 +5,7 @@ import com.mzhj19.eborrow.model.User;
 import com.mzhj19.eborrow.repository.UserRepository;
 import com.mzhj19.eborrow.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,13 +16,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public User save(UserRegisterReqDto userRegisterReqDto) {
-        /*        String encodedPassword = bCryptPasswordEncoder.encode(userRegisterReqDto.getPassword());*/
+        String encodedPassword = passwordEncoder.encode(userRegisterReqDto.getPassword());
         return userRepository.save(User.builder()
                 .email(userRegisterReqDto.getEmail())
-                .password(userRegisterReqDto.getPassword())
+                .password(encodedPassword)
                 .build()
         );
     }

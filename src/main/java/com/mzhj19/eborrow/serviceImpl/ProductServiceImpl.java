@@ -2,11 +2,15 @@ package com.mzhj19.eborrow.serviceImpl;
 
 import com.mzhj19.eborrow.dto.ProductDto;
 import com.mzhj19.eborrow.model.Product;
+import com.mzhj19.eborrow.model.lookup.ProductCategory;
 import com.mzhj19.eborrow.model.User;
+import com.mzhj19.eborrow.repository.ProductCategoryRepository;
 import com.mzhj19.eborrow.repository.ProductRepository;
 import com.mzhj19.eborrow.repository.UserRepository;
 import com.mzhj19.eborrow.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,14 +25,20 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private ProductCategoryRepository productCategoryRepository;
+
 
     @Override
     public Product save(ProductDto productDto) {
         User currentUser = userRepository.findByEmail("mzhj19@gmail.com");
+        ProductCategory categoryFromDB = productCategoryRepository.findById(productDto.getCategory())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid category ID"));
+        //if(categoryFromDB.isEmpty())  return  null;
 
         Product product = productRepository.save(Product.builder()
                 .name(productDto.getName())
-                .category(productDto.getCategory())
+                .category(categoryFromDB)
                 .description(productDto.getDescription())
                 .image1(productDto.getImage1())
                 .borrowType(productDto.getBorrowType())
@@ -60,8 +70,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAllProduct() {
-        return productRepository.findAll();
+    public Page<Product> getAllProduct(Pageable pageable) {
+        return productRepository.findAll(pageable);
     }
 
     @Override
@@ -70,10 +80,12 @@ public class ProductServiceImpl implements ProductService {
         if (optionalProduct.isEmpty()) {
             return null;
         }
+        ProductCategory categoryFromDB = productCategoryRepository.findById(productDto.getCategory())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid category ID"));
 
         Product existingProduct = optionalProduct.get();
         existingProduct.setName(productDto.getName());
-        existingProduct.setCategory(productDto.getCategory());
+        existingProduct.setCategory(categoryFromDB);
         existingProduct.setDescription(productDto.getDescription());
         existingProduct.setImage1(productDto.getImage1());
         existingProduct.setBorrowType(productDto.getBorrowType());

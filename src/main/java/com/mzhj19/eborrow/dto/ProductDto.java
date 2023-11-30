@@ -17,8 +17,8 @@ public class ProductDto implements Serializable {
     @NotBlank(message = "NAME CAN NOT BE BLANK")
     private String name;
 
-    @NotBlank(message = "CATEGORY CANNOT BE BLANK")
-    private String category;
+    //@NotBlank(message = "CATEGORY CANNOT BE BLANK")
+    private Long category;
 
     @NotBlank(message = "DESCRIPTION CAN NOT BE BLANK")
     private String description;

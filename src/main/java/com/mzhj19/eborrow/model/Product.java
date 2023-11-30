@@ -1,6 +1,8 @@
 package com.mzhj19.eborrow.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mzhj19.eborrow.model.lookup.ProductCategory;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,8 +23,14 @@ public class Product {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "category", nullable = false)
-    private String category;
+/*    @Column(name = "category", nullable = false)
+    private String category;*/
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    @JsonIgnoreProperties("products")
+    private ProductCategory category;
+
 
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;

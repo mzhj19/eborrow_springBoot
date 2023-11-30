@@ -9,6 +9,10 @@ import com.mzhj19.eborrow.model.Product;
 import com.mzhj19.eborrow.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -16,8 +20,10 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping(WebApiUrlConstants.API_URI_PREFIX + "/product")
 public class ProductController {
@@ -33,14 +39,22 @@ public class ProductController {
             return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.BAD_REQUEST.value(), errors), HttpStatus.BAD_REQUEST);
         }
         Product savedProduct = productService.save(productDto);
+        if(savedProduct == null)  {
+            return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.NOT_FOUND.value(), ResponseMessageConstants.DATA_NOT_FOUND), HttpStatus.NOT_FOUND);
+        }
 
         return new ResponseEntity<>(new ResponseSuccessData<>(ResponseMessageConstants.SAVE_SUCCESS, savedProduct), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getAllProduct", method = RequestMethod.GET)
-    public ResponseEntity<?> getAllProduct() throws Exception {
-        List<Product> products = productService.getAllProduct();
-        if (products.size() == 0) {
+    public ResponseEntity<?> getAllProduct(@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                                           @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                                           @RequestParam(value = "sort", defaultValue = "id") String sort) throws Exception {
+
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sort));
+        Page<Product> products = productService.getAllProduct(pageable);
+
+        if (products.isEmpty()) {
             return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.NOT_FOUND.value(), ResponseMessageConstants.DATA_NOT_FOUND), HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(new ResponseSuccessData<>(ResponseMessageConstants.DATA_FOUND, products), HttpStatus.OK);
