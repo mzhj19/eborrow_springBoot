@@ -1,7 +1,7 @@
-/*
-package com.mzhj19.eborrow.model.lookup;
+package com.mzhj19.eborrow.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,12 +24,12 @@ public class District {
     @Column(name = "name")
     private String districtName;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "division_id", nullable = false)
     @JsonIgnoreProperties("district")
-    private Division division;
+    private Division division;*/
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "district")
-    private Set<SubDistrict> subDistricts;
+    private Set<Product> products;
 }
-*/

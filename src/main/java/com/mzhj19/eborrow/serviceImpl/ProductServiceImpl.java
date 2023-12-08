@@ -1,13 +1,12 @@
 package com.mzhj19.eborrow.serviceImpl;
 
 import com.mzhj19.eborrow.dto.ProductDto;
-import com.mzhj19.eborrow.model.Product;
+import com.mzhj19.eborrow.model.*;
+import com.mzhj19.eborrow.model.lookup.BorrowType;
 import com.mzhj19.eborrow.model.lookup.ProductCategory;
-import com.mzhj19.eborrow.model.User;
-import com.mzhj19.eborrow.repository.ProductCategoryRepository;
-import com.mzhj19.eborrow.repository.ProductRepository;
-import com.mzhj19.eborrow.repository.UserRepository;
+import com.mzhj19.eborrow.repository.*;
 import com.mzhj19.eborrow.service.ProductService;
+import com.mzhj19.eborrow.util.MappingValues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,26 +27,44 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
 
+    @Autowired
+    private DivisionRepository divisionRepository;
+
+    @Autowired
+    private DistrictRepository districtRepository;
+
+    @Autowired
+    private SubDistrictRepository subDistrictRepository;
+
+    @Autowired
+    private BorrowTypeRepository borrowTypeRepository;
+
 
     @Override
     public Product save(ProductDto productDto) {
         User currentUser = userRepository.findByEmail("mzhj19@gmail.com");
-        ProductCategory categoryFromDB = productCategoryRepository.findById(productDto.getCategory())
+        ProductCategory categoryFromDB = productCategoryRepository.findById((Long)productDto.getCategory())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid category ID"));
         //if(categoryFromDB.isEmpty())  return  null;
+
+        BorrowType borrowTypeFromDB = borrowTypeRepository.getBorrowTypeByBorrowTypeName(productDto.getBorrowType());
+
+        Division divisionFromDb = divisionRepository.findDivisionByDivisionName(productDto.getDivision());
+        District districtFromDb = districtRepository.findDistrictByDistrictName(productDto.getDistrict());
+        SubDistrict subDistrictFromDb = subDistrictRepository.findSubDistrictBySubDistrictName(productDto.getSubDistrict());
 
         Product product = productRepository.save(Product.builder()
                 .name(productDto.getName())
                 .category(categoryFromDB)
                 .description(productDto.getDescription())
                 .image1(productDto.getImage1())
-                .borrowType(productDto.getBorrowType())
+                .borrowType(borrowTypeFromDB)
                 .perUnitPrice(productDto.getPerUnitPrice())
                 .mobileNo(productDto.getMobileNo())
                 .ownerId(currentUser)
-                .division(productDto.getDivision())
-                .district(productDto.getDistrict())
-                .subDistrict(productDto.getSubDistrict())
+                .division(divisionFromDb)
+                .district(districtFromDb)
+                .subDistrict(subDistrictFromDb)
                 .status(productDto.getStatus())
                 .build());
 
@@ -75,6 +92,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Page<ProductCategory> getAllProductByCategoryId(Long id, Pageable pageable) {
+        return productCategoryRepository.getAllProductByCategoryId(id, pageable);
+    }
+
+    @Override
+    public List<ProductCategory> getProductCategory() {
+        return productCategoryRepository.findAll();
+    }
+
+    @Override
     public Product updateProduct(Long id, ProductDto productDto) {
         Optional<Product> optionalProduct = productRepository.findById(id);
         if (optionalProduct.isEmpty()) {
@@ -83,17 +110,24 @@ public class ProductServiceImpl implements ProductService {
         ProductCategory categoryFromDB = productCategoryRepository.findById(productDto.getCategory())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid category ID"));
 
+        BorrowType borrowTypeFromDB = borrowTypeRepository.getBorrowTypeByBorrowTypeName(productDto.getBorrowType());
+
+        Division divisionFromDb = divisionRepository.findDivisionByDivisionName(productDto.getDivision());
+        District districtFromDb = districtRepository.findDistrictByDistrictName(productDto.getDistrict());
+        SubDistrict subDistrictFromDb = subDistrictRepository.findSubDistrictBySubDistrictName(productDto.getSubDistrict());
+
+
         Product existingProduct = optionalProduct.get();
         existingProduct.setName(productDto.getName());
         existingProduct.setCategory(categoryFromDB);
         existingProduct.setDescription(productDto.getDescription());
         existingProduct.setImage1(productDto.getImage1());
-        existingProduct.setBorrowType(productDto.getBorrowType());
+        existingProduct.setBorrowType(borrowTypeFromDB);
         existingProduct.setPerUnitPrice(productDto.getPerUnitPrice());
         existingProduct.setMobileNo(productDto.getMobileNo());
-        existingProduct.setDivision(productDto.getDivision());
-        existingProduct.setDistrict(productDto.getDistrict());
-        existingProduct.setSubDistrict(productDto.getSubDistrict());
+        existingProduct.setDivision(divisionFromDb);
+        existingProduct.setDistrict(districtFromDb);
+        existingProduct.setSubDistrict(subDistrictFromDb);
 
         return productRepository.save(existingProduct);
     }
@@ -101,6 +135,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<Product> getProductByCategoryId(Long id, Pageable pageable) {
+        return productRepository.findProductByCategoryId(id, pageable);
     }
 
 

@@ -42,13 +42,13 @@ public class ProductDto implements Serializable {
     private String mobileNo;
 
     //@NotBlank(message = "DIVISION CAN NOT BE BLANK")
-    private Long division;
+    private String division;
 
     //@NotBlank(message = "DISTRICT CAN NOT BE BLANK")
-    private Long district;
+    private String district;
 
     //@NotBlank(message = "SUB DISTRICT CAN NOT BE BLANK")
-    private Long subDistrict;
+    private String subDistrict;
 
     private String status = "RETURNED";
 }

@@ -6,6 +6,7 @@ import com.mzhj19.eborrow.data.response.ResponseErrorData;
 import com.mzhj19.eborrow.data.response.ResponseSuccessData;
 import com.mzhj19.eborrow.dto.ProductDto;
 import com.mzhj19.eborrow.model.Product;
+import com.mzhj19.eborrow.model.lookup.ProductCategory;
 import com.mzhj19.eborrow.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,11 +48,11 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/getAllProduct", method = RequestMethod.GET)
-    public ResponseEntity<?> getAllProduct(@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
-                                           @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
-                                           @RequestParam(value = "sort", defaultValue = "id") String sort) throws Exception {
+    public ResponseEntity<?> getAllProduct(@RequestParam(value = "page", defaultValue = "0") int page,
+                                           @RequestParam(value = "size", defaultValue = "10") int size/*,
+                                           @RequestParam(value = "sort", defaultValue = "id") String sort*/) throws Exception {
 
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sort));
+        Pageable pageable = PageRequest.of(page, size/*, Sort.by(sort)*/);
         Page<Product> products = productService.getAllProduct(pageable);
 
         if (products.isEmpty()) {
@@ -59,6 +60,24 @@ public class ProductController {
         }
         return new ResponseEntity<>(new ResponseSuccessData<>(ResponseMessageConstants.DATA_FOUND, products), HttpStatus.OK);
     }
+
+
+    @RequestMapping(value = "/getProductByCategoryId", method = RequestMethod.GET)
+    public ResponseEntity<?> getProductByCategoryId(@RequestParam("id") String id,
+                                                    @RequestParam(value = "page", defaultValue = "0") int page,
+                                                    @RequestParam(value = "size", defaultValue = "10") int size
+                                                    /*@RequestParam(value = "sort", defaultValue = "id") String sort*/) throws Exception {
+
+        Pageable pageable = PageRequest.of(page, size /*Sort.by(sort)*/);
+        Page<Product> products = productService.getProductByCategoryId(Long.valueOf(id), pageable);
+
+        if (products.isEmpty()) {
+            return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.NOT_FOUND.value(), ResponseMessageConstants.DATA_NOT_FOUND), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(new ResponseSuccessData<>(ResponseMessageConstants.DATA_FOUND, products), HttpStatus.OK);
+    }
+
+
 
     @RequestMapping(value = "/getProductById", method = RequestMethod.GET)
     public ResponseEntity<?> getProductById(@RequestParam("id") String id) throws Exception {
@@ -107,5 +126,40 @@ public class ProductController {
 
         return new ResponseEntity<>(new ResponseSuccessData<>(ResponseMessageConstants.DELETE_SUCCESS), HttpStatus.OK);
     }
+
+
+    /*@RequestMapping(value = "/getAllProductByCategoryId", method = RequestMethod.GET)
+    public ResponseEntity<?> getAllProductByCategoryId(@RequestParam("id") String id,
+                                                       @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                                                       @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                                                       @RequestParam(value = "sort", defaultValue = "id") String sort) throws Exception {
+
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(sort));
+        Page<ProductCategory> productCategory = productService.getAllProductByCategoryId(Long.valueOf(id), pageable);
+
+        if (productCategory.isEmpty()) {
+            return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.NOT_FOUND.value(), ResponseMessageConstants.DATA_NOT_FOUND), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(new ResponseSuccessData<>(ResponseMessageConstants.DATA_FOUND, productCategory), HttpStatus.OK);
+    }*/
+
+
+    @RequestMapping(value = "/getProductCategory", method = RequestMethod.GET)
+    public ResponseEntity<?> getProductCategory() throws Exception {
+        List<ProductCategory> productCategory = productService.getProductCategory();
+
+        if (productCategory.isEmpty()) {
+            return new ResponseEntity<>(new ResponseErrorData<>(HttpStatus.NOT_FOUND.value(), ResponseMessageConstants.DATA_NOT_FOUND), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(new ResponseSuccessData<>(ResponseMessageConstants.DATA_FOUND, productCategory), HttpStatus.OK);
+    }
+
+    @RequestMapping("/test")
+    public String test()    {
+        return "demo test from spring boot";
+    }
+
+
+
 
 }

@@ -23,4 +23,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query(value = "SELECT * FROM products p " +
             "WHERE p.owner_id IN (SELECT id FROM users u WHERE u.email = :email)", nativeQuery = true)
     List<Product> findByOwnerIdEma(@Param("email") String email);
+
+    Page<Product> findProductByCategoryId(Long id, Pageable pageable);
 }

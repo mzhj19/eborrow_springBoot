@@ -2,6 +2,7 @@ package com.mzhj19.eborrow.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mzhj19.eborrow.model.lookup.BorrowType;
 import com.mzhj19.eborrow.model.lookup.ProductCategory;
 import jakarta.persistence.*;
 import lombok.*;
@@ -52,8 +53,13 @@ public class Product {
     @Column(name = "image4")
     private byte[] image4;*/
 
-    @Column(name = "borrow_type", nullable = false)
-    private String borrowType;
+/*    @Column(name = "borrow_type", nullable = false)
+    private String borrowType;*/
+
+    @ManyToOne(cascade = CascadeType.ALL) // TO DO
+    @JoinColumn(name = "borrowType_id", nullable = false)
+    @JsonIgnoreProperties("products")
+    private BorrowType borrowType;
 
     @Column(name = "per_unit_price", nullable = false)
     private String perUnitPrice;
@@ -68,18 +74,33 @@ public class Product {
     @JoinColumn(name = "owner_id")
     private User ownerId;
 
-    @Column(name = "division", nullable = false)
+/*    @Column(name = "division", nullable = false)
     private Long division;
 
     @Column(name = "district", nullable = false)
     private Long district;
 
     @Column(name = "sub_district", nullable = false)
-    private Long subDistrict;
+    private Long subDistrict;*/
+
+    @ManyToOne(cascade = CascadeType.ALL)   // TO DO
+    @JoinColumn(name = "division_id", nullable = false)
+    //@JsonIgnoreProperties("district")
+    private Division division;
+
+    @ManyToOne(cascade = CascadeType.ALL)   // TO DO
+    @JoinColumn(name = "district_id", nullable = false)
+    //@JsonIgnoreProperties("district")
+    private District district;
+
+    @ManyToOne(cascade = CascadeType.ALL)   // TO DO
+    @JoinColumn(name = "sub_district_id", nullable = false)
+    //@JsonIgnoreProperties("district")
+    private SubDistrict subDistrict;
 
     //@Enumerated(EnumType.STRING)
     //@Column(name = "status", columnDefinition = "ENUM('BORROWED', 'RETURNED') DEFAULT 'RETURNED'")
-    @Column(name = "status")
+    @Column(name = "status")    // NO NEED
     private String status;
 
     @JsonIgnore

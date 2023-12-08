@@ -1,7 +1,6 @@
-/*
-package com.mzhj19.eborrow.model.lookup;
+package com.mzhj19.eborrow.model;
 
-import com.mzhj19.eborrow.model.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +22,7 @@ public class Division {
     @Column(name = "name")
     private String divisionName;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "division")
-    private Set<District> districts;
+    private Set<Product> products;
 }
-*/
