@@ -56,7 +56,7 @@ public class Product {
 /*    @Column(name = "borrow_type", nullable = false)
     private String borrowType;*/
 
-    @ManyToOne(cascade = CascadeType.ALL) // TO DO
+    @ManyToOne
     @JoinColumn(name = "borrowType_id", nullable = false)
     @JsonIgnoreProperties("products")
     private BorrowType borrowType;
@@ -83,17 +83,17 @@ public class Product {
     @Column(name = "sub_district", nullable = false)
     private Long subDistrict;*/
 
-    @ManyToOne(cascade = CascadeType.ALL)   // TO DO
+    @ManyToOne
     @JoinColumn(name = "division_id", nullable = false)
     //@JsonIgnoreProperties("district")
     private Division division;
 
-    @ManyToOne(cascade = CascadeType.ALL)   // TO DO
+    @ManyToOne
     @JoinColumn(name = "district_id", nullable = false)
     //@JsonIgnoreProperties("district")
     private District district;
 
-    @ManyToOne(cascade = CascadeType.ALL)   // TO DO
+    @ManyToOne
     @JoinColumn(name = "sub_district_id", nullable = false)
     //@JsonIgnoreProperties("district")
     private SubDistrict subDistrict;
