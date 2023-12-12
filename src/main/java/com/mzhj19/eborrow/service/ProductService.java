@@ -2,12 +2,11 @@ package com.mzhj19.eborrow.service;
 
 import com.mzhj19.eborrow.dto.ProductDto;
 import com.mzhj19.eborrow.model.Product;
-import com.mzhj19.eborrow.model.lookup.ProductCategory;
+import com.mzhj19.eborrow.model.ProductCategory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ProductService {
     Product save(ProductDto productDto);

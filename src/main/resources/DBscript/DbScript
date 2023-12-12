@@ -1,3 +1,8 @@
+delete from eborrow.sub_district;
+delete from eborrow.district;
+delete from eborrow.division;
+
+
 *********** Division ************
 INSERT INTO eborrow.division
 VALUES

@@ -1,31 +1,29 @@
 package com.mzhj19.eborrow.model.lookup;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.mzhj19.eborrow.model.Product;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.RequiredArgsConstructor;
-
-import java.util.Set;
+import lombok.Setter;
 
 @Entity
-@Table(name = "borrowType")
+@Table(name = "lookup_sub_district")
 @Getter
 @Setter
 @RequiredArgsConstructor
-
-public class BorrowType {
+public class LookupSubDistrict {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Short id;
 
     @Column(name = "name")
-    private String borrowTypeName;
+    private String name;
 
     @JsonIgnore /// pore add korechi
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "borrowType")
-    private Set<Product> products;
+    @ManyToOne
+    @JoinColumn(name = "lookup_district_id", nullable = false)
+    @JsonIgnoreProperties("lookup_sub_district")
+    private LookupDistrict lookupDistrict;
 }

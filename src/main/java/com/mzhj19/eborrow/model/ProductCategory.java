@@ -1,4 +1,4 @@
-package com.mzhj19.eborrow.model.lookup;
+package com.mzhj19.eborrow.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mzhj19.eborrow.model.Product;

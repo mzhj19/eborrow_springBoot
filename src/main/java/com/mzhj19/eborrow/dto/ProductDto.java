@@ -50,5 +50,5 @@ public class ProductDto implements Serializable {
     //@NotBlank(message = "SUB DISTRICT CAN NOT BE BLANK")
     private String subDistrict;
 
-    private String status = "RETURNED";
+/*    private String status = "RETURNED";*/
 }

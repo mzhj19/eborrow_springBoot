@@ -2,9 +2,14 @@
     Lookup table
 ******************************************
 
+delete from eborrow.lookup_sub_district;
+delete from eborrow.lookup_district;
+delete from eborrow.lookup_division;
+
+
 
 *********** Division ************
-INSERT INTO eborrow.division
+INSERT INTO eborrow.lookup_division
 VALUES
 (1,'Mymensingh'),
 (2,'Dhaka'),
@@ -20,7 +25,7 @@ VALUES
 *************************** District **************************
 
 /* Mymensingh Division */
-INSERT INTO eborrow.district(id,name,division_id)
+INSERT INTO eborrow.lookup_district(id,name,lookup_division_id)
 VALUES
 (1,'Jamalpur',1),
 (2,'Mymensingh',1),
@@ -28,7 +33,7 @@ VALUES
 (4,'Netrokona',1);
 
 /* Dhaka Division */
-INSERT INTO eborrow.district(id,name,division_id)
+INSERT INTO eborrow.lookup_district(id,name,lookup_division_id)
 VALUES
 (5,'Narsingdi',2),
 (6, 'Gazipur', 2),
@@ -45,7 +50,7 @@ VALUES
 (17, 'Faridpur', 2);
 
 /*  Chittagong Division */
-INSERT INTO eborrow.district (id, name, division_id) VALUES
+INSERT INTO eborrow.lookup_district (id, name, lookup_division_id) VALUES
 (18, 'Cumilla', 3),
 (19, 'Feni', 3),
 (20, 'Brahmanbaria', 3),
@@ -59,14 +64,14 @@ INSERT INTO eborrow.district (id, name, division_id) VALUES
 (28, 'Bandarban', 3);
 
 /*  Sylhet Division */
-INSERT INTO eborrow.district (id, name, division_id) VALUES
+INSERT INTO eborrow.lookup_district (id, name, lookup_division_id) VALUES
 (29, 'Sylhet', 4),
 (30, 'Moulvibazar', 4),
 (31, 'Habiganj', 4),
 (32, 'Sunamganj', 4);
 
 /*  Rajshahi Division */
-INSERT INTO eborrow.district (id, name, division_id) VALUES
+INSERT INTO eborrow.lookup_district (id, name, lookup_division_id) VALUES
 (33, 'Sirajganj', 5),
 (34, 'Pabna', 5),
 (35, 'Bogura', 5),
@@ -77,7 +82,7 @@ INSERT INTO eborrow.district (id, name, division_id) VALUES
 (40, 'Naogaon', 5);
 
 /*  Khulna Division */
-INSERT INTO eborrow.district (id, name, division_id) VALUES
+INSERT INTO eborrow.lookup_district (id, name, lookup_division_id) VALUES
 (41, 'Khulna', 6),
 (42, 'Jashore', 6),
 (43, 'Satkhira', 6),
@@ -90,7 +95,7 @@ INSERT INTO eborrow.district (id, name, division_id) VALUES
 (50, 'Jhenaidah', 6);
 
 /*  Barisal Division */
-INSERT INTO eborrow.district (id, name, division_id) VALUES
+INSERT INTO eborrow.lookup_district (id, name, lookup_division_id) VALUES
 (51, 'Jhalakathi', 7),
 (52, 'Patuakhali', 7),
 (53, 'Pirojpur', 7),
@@ -99,7 +104,7 @@ INSERT INTO eborrow.district (id, name, division_id) VALUES
 (56, 'Barguna', 7);
 
 /*  Rangpur Division */
-INSERT INTO eborrow.district (id, name, division_id) VALUES
+INSERT INTO eborrow.lookup_district (id, name, lookup_division_id) VALUES
 (57, 'Thakurgaon', 8),
 (58, 'Panchagarh', 8),
 (59, 'Dinajpur', 8),
@@ -117,7 +122,7 @@ INSERT INTO eborrow.district (id, name, division_id) VALUES
 
 
 /* Jamalpur district */
-INSERT INTO eborrow.sub_district(id,name,district_id)
+INSERT INTO eborrow.lookup_sub_district(id,name,lookup_district_id)
 VALUES
 (1,'Sarishabari',1),
 (2,'Madarganj',1),
@@ -128,7 +133,7 @@ VALUES
 (7,'Bokshiganj',1);
 
 /* Mymensingh district */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (8, 'Fulbaria', 2),
 (9, 'Trishal', 2),
 (10, 'Bhaluka', 2),
@@ -144,7 +149,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (20, 'Tarakanda', 2);
 
 /*  Sherpur District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (21, 'Sherpursadar', 3),
 (22, 'Nalitabari', 3),
 (23, 'Sreebordi', 3),
@@ -152,7 +157,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (25, 'Jhenaigati', 3);
 
 /*  Netrokona District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (26, 'Barhatta', 4),
 (27, 'Durgapur', 4),
 (28, 'Kendua', 4),
@@ -165,7 +170,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (35, 'Netrokonasadar', 4);
 
 /*  Narsingdi District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (36, 'Belabo', 5),
 (37, 'Monohardi', 5),
 (38, 'Narsingdisadar', 5),
@@ -174,7 +179,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (41, 'Shibpur', 5);
 
 /*  Gazipur District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (42, 'Kaliganj', 6),
 (43, 'Kaliakair', 6),
 (44, 'Kapasia', 6),
@@ -182,7 +187,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (46, 'Sreepur', 6);
 
 /*  Shariatpur District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (47, 'Sadar', 7),
 (48, 'Naria', 7),
 (49, 'Zajira', 7),
@@ -191,7 +196,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (52, 'Damudya', 7);
 
 /*  Narayanganj District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (53, 'Araihazar', 8),
 (54, 'Bandar', 8),
 (55, 'Narayanganjsadar', 8),
@@ -199,7 +204,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (57, 'Sonargaon', 8);
 
 /*  Tangail District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (58, 'Basail', 9),
 (59, 'Bhuapur', 9),
 (60, 'Delduar', 9),
@@ -214,7 +219,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (69, 'Dhanbari', 9);
 
 /*  Kishoreganj District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (70, 'Itna', 10),
 (71, 'Katiadi', 10),
 (72, 'Bhairab', 10),
@@ -230,7 +235,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (82, 'Nikli', 10);
 
 /*  Manikganj District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (83, 'Harirampur', 11),
 (84, 'Saturia', 11),
 (85, 'Sadar', 11),
@@ -240,7 +245,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (89, 'Singiar', 11);
 
 /*  Dhaka District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (90, 'Savar', 12),
 (91, 'Dhamrai', 12),
 (92, 'Keraniganj', 12),
@@ -248,7 +253,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (94, 'Dohar', 12);
 
 /*  Munshiganj District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (95, 'Sadar', 13),
 (96, 'Sreenagar', 13),
 (97, 'Sirajdikhan', 13),
@@ -257,7 +262,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (100, 'Tongibari', 13);
 
 /*  Rajbari District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (101, 'Sadar', 14),
 (102, 'Goalanda', 14),
 (103, 'Pangsa', 14),
@@ -265,7 +270,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (105, 'Kalukhali', 14);
 
 /*  Madaripur District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (106, 'Sadar', 15),
 (107, 'Shibchar', 15),
 (108, 'Kalkini', 15),
@@ -273,7 +278,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (110, 'Dasar', 15);
 
 /*  Gopalganj District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (111, 'Sadar', 16),
 (112, 'Kashiani', 16),
 (113, 'Tungipara', 16),
@@ -281,7 +286,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (115, 'Muksudpur', 16);
 
 /*  Faridpur District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (116, 'Sadar', 17),
 (117, 'Alfadanga', 17),
 (118, 'Boalmari', 17),
@@ -293,7 +298,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (124, 'Saltha', 17);
 
 /*  Cumilla District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (125, 'Debidwar', 18),
 (126, 'Barura', 18),
 (127, 'Brahmanpara', 18),
@@ -314,7 +319,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 
 
 /*  Feni District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (142, 'Chhagalnaiya', 19),
 (143, 'Sadar', 19),
 (144, 'Sonagazi', 19),
@@ -323,7 +328,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (147, 'Daganbhuiyan', 19);
 
 /*  Brahmanbaria District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (148, 'Sadar', 20),
 (149, 'Kasba', 20),
 (150, 'Nasirnagar', 20),
@@ -335,7 +340,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (156, 'Bijoynagar', 20);
 
 /*  Rangamati District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (157, 'Sadar', 21),
 (158, 'Kaptai', 21),
 (159, 'Kawkhali', 21),
@@ -348,7 +353,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (166, 'Naniarchar', 21);
 
 /*  Noakhali District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (167, 'Sadar', 22),
 (168, 'Companiganj', 22),
 (169, 'Begumganj', 22),
@@ -360,7 +365,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (175, 'Sonaimuri', 22);
 
 /*  Chandpur District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (176, 'Haimchar', 23),
 (177, 'Kachua', 23),
 (178, 'Shahrasti', 23),
@@ -371,7 +376,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (183, 'Faridgonj', 23);
 
 /*  Lakshmipur District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (184, 'Sadar', 24),
 (185, 'Kamalnagar', 24),
 (186, 'Raipur', 24),
@@ -379,7 +384,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (188, 'Ramganj', 24);
 
 /*  Chattogram District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (189, 'Rangunia', 25),
 (190, 'Sitakunda', 25),
 (191, 'Mirsharai', 25),
@@ -397,7 +402,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (203, 'Karnafuli', 25);
 
 /*  Cox's Bazar District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (204, 'Sadar', 26),
 (205, 'Chakaria', 26),
 (206, 'Kutubdia', 26),
@@ -408,7 +413,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (211, 'Teknaf', 26);
 
 /*  Khagrachari District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (212, 'Sadar', 27),
 (213, 'Dighinala', 27),
 (214, 'Panchari', 27),
@@ -420,7 +425,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (220, 'Guimara', 27);
 
 /*  Bandarban District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (221, 'Sadar', 28),
 (222, 'Alikadam', 28),
 (223, 'Naikhongchhari', 28),
@@ -431,7 +436,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 
 
 /*  Sylhet District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (228, 'Balaganj', 29),
 (229, 'Beanibazar', 29),
 (230, 'Bishwanath', 29),
@@ -447,7 +452,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (240, 'Osmaninagar', 29);
 
 /*  Moulvibazar District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (241, 'Barlekha', 30),
 (242, 'Kamolganj', 30),
 (243, 'Kulaura', 30),
@@ -457,7 +462,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (247, 'Juri', 30);
 
 /*  Habiganj District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (248, 'Nabiganj', 31),
 (249, 'Bahubal', 31),
 (250, 'Ajmiriganj', 31),
@@ -469,7 +474,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (256, 'Shayestaganj', 31);
 
 /*  Sunamganj District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (257, 'Sadar', 32),
 (258, 'Southsunamganj', 32),
 (259, 'Bishwambarpur', 32),
@@ -485,7 +490,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 
 
 /*  Sirajganj District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (269, 'Belkuchi', 33),
 (270, 'Chauhali', 33),
 (271, 'Kamarkhand', 33),
@@ -497,7 +502,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (277, 'Ullapara', 33);
 
 /*  Pabna District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (278, 'Sujanagar', 34),
 (279, 'Ishurdi', 34),
 (280, 'Bhangura', 34),
@@ -509,7 +514,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (286, 'Faridpur', 34);
 
 /*  Bogura District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (287, 'Kahaloo', 35),
 (288, 'Sadar', 35),
 (289, 'Shariakandi', 35),
@@ -524,7 +529,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (298, 'Shibganj', 35);
 
 /*  Rajshahi District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (299, 'Paba', 36),
 (300, 'Durgapur', 36),
 (301, 'Mohonpur', 36),
@@ -536,7 +541,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (307, 'Bagmara', 36);
 
 /*  Natore District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (308, 'Natoresadar', 37),
 (309, 'Singra', 37),
 (310, 'Baraigram', 37),
@@ -546,7 +551,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (314, 'Naldanga', 37);
 
 /*  Joypurhat District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (315, 'Akkelpur', 38),
 (316, 'Kalai', 38),
 (317, 'Khetlal', 38),
@@ -554,7 +559,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (319, 'Joypurhatsadar', 38);
 
 /*  Chapainawabganj District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (320, 'Chapainawabganjsadar', 39),
 (321, 'Gomostapur', 39),
 (322, 'Nachol', 39),
@@ -562,7 +567,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (324, 'Shibganj', 39);
 
 /*  Naogaon District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (325, 'Mohadevpur', 40),
 (326, 'Badalgachi', 40),
 (327, 'Patnitala', 40),
@@ -576,7 +581,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (335, 'Sapahar', 40);
 
 /*  Khulna District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (336, 'Paikgasa', 41),
 (337, 'Fultola', 41),
 (338, 'Digholia', 41),
@@ -588,7 +593,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (344, 'Koyra', 41);
 
 /*  Jashore District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (345, 'Manirampur', 42),
 (346, 'Abhaynagar', 42),
 (347, 'Bagherpara', 42),
@@ -600,7 +605,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 
 
 /* Satkhira District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (353, 'Assasuni', 43),
 (354, 'Debhata', 43),
 (355, 'Kalaroa', 43),
@@ -610,26 +615,26 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (359, 'Kaliganj', 43);
 
 /* Meherpur District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (360, 'Mujibnagar', 44),
 (361, 'Meherpursadar', 44),
 (362, 'Gangni', 44);
 
 /* Narail District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (363, 'Narailsadar', 45),
 (364, 'Lohagara', 45),
 (365, 'Kalia', 45);
 
 /* Chuadanga District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (366, 'Chuadangasadar', 46),
 (367, 'Alamdanga', 46),
 (368, 'Damurhuda', 46),
 (369, 'Jibannagar', 46);
 
 /* Kushtia District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (370, 'Kushtiasadar', 47),
 (371, 'Kumarkhali', 47),
 (372, 'Khoksa', 47),
@@ -638,14 +643,14 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (375, 'Bheramara', 47);
 
 /* Magura District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (376, 'Shalikha', 48),
 (377, 'Sreepur', 48),
 (378, 'Magurasadar', 48),
 (379, 'Mohammadpur', 48);
 
 /* Bagerhat District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (380, 'Fakirhat', 49),
 (381, 'Sadar', 49),
 (382, 'Mollahat', 49),
@@ -657,7 +662,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (388, 'Chitalmari', 49);
 
 /* Jhenaidah District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (389, 'Sadar', 50),
 (390, 'Shailkupa', 50),
 (391, 'Harinakundu', 50),
@@ -666,14 +671,14 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (394, 'Moheshpur', 50);
 
 /* Barisal District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (395, 'Sadar', 51),
 (396, 'Kathalia', 51),
 (397, 'Nalchity', 51),
 (398, 'Rajapur', 51);
 
 /* Patuakhali District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (399, 'Bauphal', 52),
 (400, 'Sadar', 52),
 (401, 'Dumki', 52),
@@ -684,7 +689,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (406, 'Rangabali', 52);
 
 /* Pirojpur District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (407, 'Sadar', 53),
 (408, 'Nazirpur', 53),
 (409, 'Kawkhali', 53),
@@ -694,7 +699,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (413, 'Indurkani', 53);
 
 /* Barishal District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (414, 'Barishalsadar', 54),
 (415, 'Bakerganj', 54),
 (416, 'Babuganj', 54),
@@ -707,7 +712,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (423, 'Hizla', 54);
 
 /* Bhola District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (424, 'Sadar', 55),
 (425, 'Borhanuddin', 55),
 (426, 'Charfesson', 55),
@@ -717,7 +722,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (430, 'Lalmohan', 55);
 
 /* Barguna District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (431, 'Amtali', 56),
 (432, 'Sadar', 56),
 (433, 'Betagi', 56),
@@ -726,7 +731,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (436, 'Taltali', 56);
 
 /* Thakurgaon District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (437, 'Thakurgaonsadar', 57),
 (438, 'Pirganj', 57),
 (439, 'Ranisankail', 57),
@@ -734,7 +739,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (441, 'Baliadangi', 57);
 
 /* Panchagarh District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (442, 'Panchagarhsadar', 58),
 (443, 'Debiganj', 58),
 (444, 'Boda', 58),
@@ -742,7 +747,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (446, 'Tetulia', 58);
 
 /* Dinajpur District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (447, 'Nawabganj', 59),
 (448, 'Birganj', 59),
 (449, 'Ghoraghat', 59),
@@ -758,7 +763,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (459, 'Chirirbandar', 59);
 
 /* Lalmonirhat District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (460, 'Sadar', 60),
 (461, 'Kaliganj', 60),
 (462, 'Hatibandha', 60),
@@ -766,7 +771,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (464, 'Aditmari', 60);
 
 /* Nilphamari District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (465, 'Syedpur', 61),
 (466, 'Domar', 61),
 (467, 'Dimla', 61),
@@ -775,7 +780,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (470, 'Nilphamarisadar', 61);
 
 /* Gaibandha District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (471, 'Sadullapur', 62),
 (472, 'Gaibandhasadar', 62),
 (473, 'Palashbari', 62),
@@ -785,7 +790,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (477, 'Phulchari', 62);
 
 /* Kurigram District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (478, 'Kurigramsadar', 63),
 (479, 'Nageshwari', 63),
 (480, 'Bhurungamari', 63),
@@ -797,7 +802,7 @@ INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
 (486, 'Charrajibpur', 63);
 
 /* Rangpur District */
-INSERT INTO eborrow.sub_district (id, name, district_id) VALUES
+INSERT INTO eborrow.lookup_sub_district (id, name, lookup_district_id) VALUES
 (487, 'Rangpursadar', 64),
 (488, 'Gangachara', 64),
 (489, 'Taragonj', 64),

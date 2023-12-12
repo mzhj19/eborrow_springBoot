@@ -6,14 +6,13 @@ import com.mzhj19.eborrow.data.response.ResponseErrorData;
 import com.mzhj19.eborrow.data.response.ResponseSuccessData;
 import com.mzhj19.eborrow.dto.ProductDto;
 import com.mzhj19.eborrow.model.Product;
-import com.mzhj19.eborrow.model.lookup.ProductCategory;
+import com.mzhj19.eborrow.model.ProductCategory;
 import com.mzhj19.eborrow.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -21,7 +20,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @CrossOrigin("http://localhost:4200")
@@ -128,7 +126,7 @@ public class ProductController {
     }
 
 
-    /*@RequestMapping(value = "/getAllProductByCategoryId", method = RequestMethod.GET)
+/*    @RequestMapping(value = "/getAllProductByCategoryId", method = RequestMethod.GET)
     public ResponseEntity<?> getAllProductByCategoryId(@RequestParam("id") String id,
                                                        @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
                                                        @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
@@ -158,8 +156,6 @@ public class ProductController {
     public String test()    {
         return "demo test from spring boot";
     }
-
-
 
 
 }

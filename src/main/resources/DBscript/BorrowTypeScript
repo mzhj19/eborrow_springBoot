@@ -1,0 +1,6 @@
+INSERT INTO eborrow.borrow_type(id,name)
+values
+(1,'hour'),
+(2,'day'),
+(3,'month'),
+(4,'year');

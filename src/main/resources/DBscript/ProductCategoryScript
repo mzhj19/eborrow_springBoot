@@ -1,0 +1,4 @@
+INSERT INTO eborrow.product_category(id,category_name)
+VALUES
+(1,'BOOK'),
+(2,'PEN');

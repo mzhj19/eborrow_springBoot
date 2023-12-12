@@ -1,7 +1,6 @@
 package com.mzhj19.eborrow.repository;
 
-import com.mzhj19.eborrow.model.Product;
-import com.mzhj19.eborrow.model.lookup.ProductCategory;
+import com.mzhj19.eborrow.model.ProductCategory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

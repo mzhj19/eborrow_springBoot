@@ -2,11 +2,10 @@ package com.mzhj19.eborrow.serviceImpl;
 
 import com.mzhj19.eborrow.dto.ProductDto;
 import com.mzhj19.eborrow.model.*;
-import com.mzhj19.eborrow.model.lookup.BorrowType;
-import com.mzhj19.eborrow.model.lookup.ProductCategory;
+import com.mzhj19.eborrow.model.BorrowType;
+import com.mzhj19.eborrow.model.ProductCategory;
 import com.mzhj19.eborrow.repository.*;
 import com.mzhj19.eborrow.service.ProductService;
-import com.mzhj19.eborrow.util.MappingValues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -65,7 +64,7 @@ public class ProductServiceImpl implements ProductService {
                 .division(divisionFromDb)
                 .district(districtFromDb)
                 .subDistrict(subDistrictFromDb)
-                .status(productDto.getStatus())
+                /*.status(productDto.getStatus())*/
                 .build());
 
         return product;

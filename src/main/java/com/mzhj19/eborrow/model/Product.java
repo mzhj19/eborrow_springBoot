@@ -2,8 +2,6 @@ package com.mzhj19.eborrow.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.mzhj19.eborrow.model.lookup.BorrowType;
-import com.mzhj19.eborrow.model.lookup.ProductCategory;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -98,10 +96,15 @@ public class Product {
     //@JsonIgnoreProperties("district")
     private SubDistrict subDistrict;
 
+
+
+/*
     //@Enumerated(EnumType.STRING)
     //@Column(name = "status", columnDefinition = "ENUM('BORROWED', 'RETURNED') DEFAULT 'RETURNED'")
     @Column(name = "status")    // NO NEED
     private String status;
+*/
+
 
     @JsonIgnore
     @Column(name = "created_at", insertable = false, updatable = false,
