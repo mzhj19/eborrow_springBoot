@@ -1,14 +1,12 @@
-package com.mzhj19.eborrow.data.response;
+package com.mzhj19.eborrow.exception;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import com.mzhj19.eborrow.dto.ResponseErrorData;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 
-@Setter
-@Getter
-@AllArgsConstructor
-public class ResponseErrorData<T> {
+
+public class EborrowAPIException extends RuntimeException {
 
     @JsonProperty("status")
     private Boolean status;
@@ -20,19 +18,18 @@ public class ResponseErrorData<T> {
 //    private String message;
 
     @JsonProperty("message")
-    private T message;
+    private String message;
 
 
-/*    public ResponseErrorData(Integer statusCode, String message) {
+/*    public EborrowAPIException(Integer statusCode, String message) {
         this.status = false;
         this.statusCode = statusCode;
         this.message = message;
     }*/
 
-    public ResponseErrorData(Integer statusCode, T message) {
+    public EborrowAPIException(Integer statusCode, String message) {
         this.status = false;
         this.statusCode = statusCode;
         this.message = message;
     }
-
 }

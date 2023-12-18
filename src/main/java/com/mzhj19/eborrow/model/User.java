@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -26,9 +27,9 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @JsonIgnore
+/*    @JsonIgnore
     @Transient
-    private String confirmedPassword;
+    private String confirmedPassword;*/
 
     @JsonIgnore
     @OneToMany(
@@ -37,6 +38,15 @@ public class User {
             cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE,}
     )
     private List<Product> products;
+
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+    )
+    private Set<Role> roles;
+
 
     @JsonIgnore
     @Column(name = "created_at", insertable = false, updatable = false,

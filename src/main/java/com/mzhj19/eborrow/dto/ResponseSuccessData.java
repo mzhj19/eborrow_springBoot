@@ -1,4 +1,4 @@
-package com.mzhj19.eborrow.data.response;
+package com.mzhj19.eborrow.dto;
 
 import com.mzhj19.eborrow.constant.ResponseMessageConstants;
 

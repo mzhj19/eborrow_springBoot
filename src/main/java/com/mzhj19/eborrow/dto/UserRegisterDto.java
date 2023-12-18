@@ -11,7 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserRegisterReqDto implements Serializable {
+public class UserRegisterDto implements Serializable {
     private static final Long serialVersionUID = 1L;
 
     @NotBlank(message = "Email CANNOT BE BLANK")
@@ -25,6 +25,6 @@ public class UserRegisterReqDto implements Serializable {
     @NotBlank(message = "PASSWORD CANNOT BE BLANK")
     private String password;
 
-    @NotBlank(message = "CONFIRMEDPASSWORD CANNOT BE BLANK")
-    private String confirmedPassword;
+/*    @NotBlank(message = "CONFIRMEDPASSWORD CANNOT BE BLANK")
+    private String confirmedPassword;*/
 }

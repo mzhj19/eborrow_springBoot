@@ -1,6 +1,6 @@
 package com.mzhj19.eborrow.serviceImpl;
 
-import com.mzhj19.eborrow.dto.UserRegisterReqDto;
+import com.mzhj19.eborrow.dto.UserRegisterDto;
 import com.mzhj19.eborrow.model.User;
 import com.mzhj19.eborrow.repository.UserRepository;
 import com.mzhj19.eborrow.service.UserService;
@@ -20,10 +20,10 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public User save(UserRegisterReqDto userRegisterReqDto) {
-        String encodedPassword = passwordEncoder.encode(userRegisterReqDto.getPassword());
+    public User save(UserRegisterDto userRegisterDto) {
+        String encodedPassword = passwordEncoder.encode(userRegisterDto.getPassword());
         return userRepository.save(User.builder()
-                .email(userRegisterReqDto.getEmail())
+                .email(userRegisterDto.getEmail())
                 .password(encodedPassword)
                 .build()
         );
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByEmail(String email) {
+    public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 

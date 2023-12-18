@@ -2,8 +2,8 @@ package com.mzhj19.eborrow.controller;
 
 import com.mzhj19.eborrow.constant.ResponseMessageConstants;
 import com.mzhj19.eborrow.constant.WebApiUrlConstants;
-import com.mzhj19.eborrow.data.response.ResponseErrorData;
-import com.mzhj19.eborrow.data.response.ResponseSuccessData;
+import com.mzhj19.eborrow.dto.ResponseErrorData;
+import com.mzhj19.eborrow.dto.ResponseSuccessData;
 import com.mzhj19.eborrow.dto.ProductDto;
 import com.mzhj19.eborrow.model.Product;
 import com.mzhj19.eborrow.model.ProductCategory;
@@ -46,11 +46,12 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/getAllProduct", method = RequestMethod.GET)
-    public ResponseEntity<?> getAllProduct(@RequestParam(value = "page", defaultValue = "0") int page,
-                                           @RequestParam(value = "size", defaultValue = "10") int size/*,
-                                           @RequestParam(value = "sort", defaultValue = "id") String sort*/) throws Exception {
+    public ResponseEntity<?> getAllProduct(@RequestParam(value = "page", defaultValue = "0", required = true) int page,
+                                           @RequestParam(value = "size", defaultValue = "10", required = true) int size/* ,
+                                           @RequestParam(value = "sort", defaultValue = "id", required = false) String sort,
+                                           @RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir */) throws Exception {
 
-        Pageable pageable = PageRequest.of(page, size/*, Sort.by(sort)*/);
+        Pageable pageable = PageRequest.of(page, size/*, Sort.by(sort)*/);  // Sort.by(sort).decending()
         Page<Product> products = productService.getAllProduct(pageable);
 
         if (products.isEmpty()) {

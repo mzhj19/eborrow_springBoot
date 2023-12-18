@@ -41,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product save(ProductDto productDto) {
-        User currentUser = userRepository.findByEmail("mzhj19@gmail.com");
+        Optional<User> currentUser = userRepository.findByEmail("mzhj19@gmail.com");
         ProductCategory categoryFromDB = productCategoryRepository.findById((Long)productDto.getCategory())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid category ID"));
         //if(categoryFromDB.isEmpty())  return  null;
@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
                 .borrowType(borrowTypeFromDB)
                 .perUnitPrice(productDto.getPerUnitPrice())
                 .mobileNo(productDto.getMobileNo())
-                .ownerId(currentUser)
+                .ownerId(currentUser.get())
                 .division(divisionFromDb)
                 .district(districtFromDb)
                 .subDistrict(subDistrictFromDb)
