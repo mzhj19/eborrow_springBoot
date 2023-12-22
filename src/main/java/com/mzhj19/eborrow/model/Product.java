@@ -70,7 +70,7 @@ public class Product {
             fetch = FetchType.EAGER
     )
     @JoinColumn(name = "owner_id")
-    private User ownerId;
+    private EborrowUser ownerId;
 
 /*    @Column(name = "division", nullable = false)
     private Long division;

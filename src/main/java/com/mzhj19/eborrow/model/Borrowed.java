@@ -20,7 +20,7 @@ public class Borrowed {
 
     @ManyToOne
     @JoinColumn(name = "borrower_id")
-    private User borrower;
+    private EborrowUser borrower;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
