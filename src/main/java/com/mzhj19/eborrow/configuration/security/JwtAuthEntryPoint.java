@@ -1,8 +1,7 @@
 package com.mzhj19.eborrow.configuration.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mzhj19.eborrow.data.response.ResponseErrorData;
-import com.mzhj19.eborrow.exceptions.ErrorObject;
+import com.mzhj19.eborrow.dto.ResponseErrorData;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 
 @Component
 public class JwtAuthEntryPoint implements AuthenticationEntryPoint {

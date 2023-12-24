@@ -3,8 +3,8 @@ package com.mzhj19.eborrow.controller;
 
 import com.mzhj19.eborrow.constant.ResponseMessageConstants;
 import com.mzhj19.eborrow.constant.WebApiUrlConstants;
-import com.mzhj19.eborrow.data.response.ResponseErrorData;
-import com.mzhj19.eborrow.data.response.ResponseSuccessData;
+import com.mzhj19.eborrow.dto.ResponseErrorData;
+import com.mzhj19.eborrow.dto.ResponseSuccessData;
 import com.mzhj19.eborrow.dto.UserRegisterReqDto;
 import com.mzhj19.eborrow.model.EborrowUser;
 import com.mzhj19.eborrow.service.UserService;

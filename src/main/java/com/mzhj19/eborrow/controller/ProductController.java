@@ -2,8 +2,8 @@ package com.mzhj19.eborrow.controller;
 
 import com.mzhj19.eborrow.constant.ResponseMessageConstants;
 import com.mzhj19.eborrow.constant.WebApiUrlConstants;
-import com.mzhj19.eborrow.data.response.ResponseErrorData;
-import com.mzhj19.eborrow.data.response.ResponseSuccessData;
+import com.mzhj19.eborrow.dto.ResponseErrorData;
+import com.mzhj19.eborrow.dto.ResponseSuccessData;
 import com.mzhj19.eborrow.dto.ProductDto;
 import com.mzhj19.eborrow.model.Product;
 import com.mzhj19.eborrow.model.ProductCategory;

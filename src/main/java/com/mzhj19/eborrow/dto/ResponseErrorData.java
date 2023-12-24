@@ -1,4 +1,4 @@
-package com.mzhj19.eborrow.data.response;
+package com.mzhj19.eborrow.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
