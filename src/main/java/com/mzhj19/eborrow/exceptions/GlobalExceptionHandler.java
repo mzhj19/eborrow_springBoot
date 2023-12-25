@@ -14,12 +14,20 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(EborrowApiException.class)
-    public ResponseEntity<ResponseErrorData<String>> handleEborrowApiException(EborrowApiException ex, WebRequest request) {
+    @ExceptionHandler(EborrowApiNotFoundException.class)
+    public ResponseEntity<ResponseErrorData<String>> handleEborrowApiNotFoundException(EborrowApiNotFoundException ex, WebRequest request) {
 
         ResponseErrorData<String> responseErrorData = new ResponseErrorData<>(HttpStatus.NOT_FOUND.value(), ex.getMessage());
 
         return new ResponseEntity<>(responseErrorData, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(EborrowApiBadRequestException.class)
+    public ResponseEntity<ResponseErrorData<String>> handleEborrowApiBadRequestException(EborrowApiBadRequestException ex, WebRequest request) {
+
+        ResponseErrorData<String> responseErrorData = new ResponseErrorData<>(HttpStatus.BAD_REQUEST.value(), ex.getMessage());
+
+        return new ResponseEntity<>(responseErrorData, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(EborrowApiValidationException.class)

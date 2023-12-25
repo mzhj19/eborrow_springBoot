@@ -1,10 +1,12 @@
 package com.mzhj19.eborrow.controller;
 
 import com.mzhj19.eborrow.configuration.security.JWTProvider;
+import com.mzhj19.eborrow.constant.ResponseMessageConstants;
 import com.mzhj19.eborrow.constant.WebApiUrlConstants;
 import com.mzhj19.eborrow.dto.AuthResponseDTO;
 import com.mzhj19.eborrow.dto.LoginDto;
 import com.mzhj19.eborrow.dto.RegisterDto;
+import com.mzhj19.eborrow.dto.ResponseSuccessData;
 import com.mzhj19.eborrow.model.EborrowUser;
 import com.mzhj19.eborrow.model.Role;
 import com.mzhj19.eborrow.repository.RoleRepository;
@@ -59,10 +61,10 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
+    public ResponseEntity<ResponseSuccessData<String>> register(@RequestBody RegisterDto registerDto) {
 
         String response = authService.register(registerDto);
 
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseSuccessData<>(ResponseMessageConstants.SAVE_SUCCESS, response), HttpStatus.OK);
     }
 }

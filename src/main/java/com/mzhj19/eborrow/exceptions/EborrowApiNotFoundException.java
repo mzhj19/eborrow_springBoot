@@ -1,9 +1,9 @@
 package com.mzhj19.eborrow.exceptions;
 
-public class EborrowApiException extends RuntimeException {
+public class EborrowApiNotFoundException extends RuntimeException {
     private static final long serialVerisionUID = 1;
 
-    public EborrowApiException(String message) {
+    public EborrowApiNotFoundException(String message) {
         super(message);
     }
 }

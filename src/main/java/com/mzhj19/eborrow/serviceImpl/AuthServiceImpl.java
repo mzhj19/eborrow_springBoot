@@ -3,7 +3,8 @@ package com.mzhj19.eborrow.serviceImpl;
 import com.mzhj19.eborrow.configuration.security.JWTProvider;
 import com.mzhj19.eborrow.dto.LoginDto;
 import com.mzhj19.eborrow.dto.RegisterDto;
-import com.mzhj19.eborrow.exceptions.EborrowApiException;
+import com.mzhj19.eborrow.exceptions.EborrowApiBadRequestException;
+import com.mzhj19.eborrow.exceptions.EborrowApiNotFoundException;
 import com.mzhj19.eborrow.exceptions.EborrowApiValidationException;
 import com.mzhj19.eborrow.model.EborrowUser;
 import com.mzhj19.eborrow.model.Role;
@@ -59,7 +60,7 @@ public class AuthServiceImpl implements AuthService {
 
             return token;
         }   catch (Exception exception) {
-            throw new EborrowApiException("WRONG CREDENTIALS!");
+            throw new EborrowApiBadRequestException("WRONG CREDENTIALS!");
         }
     }
 
@@ -79,7 +80,7 @@ public class AuthServiceImpl implements AuthService {
             throw new EborrowApiValidationException(errors);
         }
         if (userRepository.existsByEmail(registerDto.getEmail())) {
-            throw new EborrowApiException("USER ALREADY EXISTS!");
+            throw new EborrowApiBadRequestException("EMAIL ALREADY EXISTS!");
         }
 
         EborrowUser user = new EborrowUser();
@@ -89,7 +90,7 @@ public class AuthServiceImpl implements AuthService {
         Role roles = roleRepository.findByName("USER").get();
         user.setRoles(Collections.singletonList(roles));
 
-        userRepository.save(user);
+        //return userRepository.save(user);
 
         return "USER REGISTERED SUCCESSFULLY!";
     }

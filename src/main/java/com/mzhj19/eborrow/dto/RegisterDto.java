@@ -12,7 +12,7 @@ public class RegisterDto implements Serializable {
     private static final Long serialVersionUID = 1L;
 
     @NotBlank(message = "EMAIL CANNOT BE BLANK!")
-    @Pattern(regexp = "^[\\w\\.-]+@[a-zA-Z\\d\\.-]+\\.[a-zA-Z]{2,}$", message = "INVALID EMAIL FORMAT!")
+    @Pattern(regexp = "^[\\w\\.-]+@[a-zA-Z\\d\\.-]+\\.[a-zA-Z]{2,}$", message = "INVALID EMAIL!")
     private String email;
 
 /*    @NotBlank(message = "MOBILE NO CANNOT BE BLANK")
